@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Style Customizer · SYNAPTICA</title>
+<meta name="description" content="Live theme variables and a bezier curve editor that exports engine curves.">
+<meta property="og:title" content="Style Customizer · SYNAPTICA">
+<meta property="og:description" content="Live theme variables and a bezier curve editor that exports engine curves.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="index.html"><i></i>SYNAPTICA UI</a>
+    <nav class="links" aria-label="Pages">
+      <a href="builder.html">HUD Builder</a>
+      <a href="components.html">Components</a>
+      <a href="customizer.html" aria-current="page">Customizer</a>
+      <a href="pricing.html">Pricing</a>
+    </nav>
+    <a class="btn btn-primary btn-sm cta-btn" href="pricing.html#checkout">Get started</a>
+    <details class="menu"><summary>MENU</summary><nav aria-label="Pages (mobile)">
+      <a href="index.html">Home</a>
+      <a href="builder.html">HUD Builder</a>
+      <a href="components.html">Components</a>
+      <a href="customizer.html" aria-current="page">Customizer</a>
+      <a href="pricing.html">Pricing</a>
+    </nav></details>
+  </div>
+</header>
+<main>
+<section class="hero sm" data-hue="4.6">
+  <canvas class="heroGL" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Style customizer</span>
+      <h1 class="glitch" style="margin-top:1rem">Real-time UI theming.<br><span class="hot">Zero design tools</span> required.</h1>
+      <p class="lede">Change colors, typography, stroke weights and animation curves directly in your browser. Every change is a variable, so it travels to the engine as data instead of re-exported art.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#theme">Try it free</a>
+        <a class="btn btn-ghost" href="#motion">Open the curve editor</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="theme">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Capabilities · global + override</span>
+      <h2>Control every pixel <span class="hot">precisely</span></h2>
+      <p class="lede">Change one hex code and watch the whole HUD obey. Then override a single element without breaking the master system.</p>
+    </div>
+    <div class="theme-stage">
+      <div class="mini" id="mini">
+        <div class="card"><span class="chip">VITALS</span><b>Health 86</b><div class="meter"><i style="width:86%"></i></div></div>
+        <div class="card" id="ovrCard"><span class="chip">SHIELD</span><b>Shield 40</b><div class="meter"><i style="width:40%"></i></div></div>
+        <div class="card wide"><div style="display:flex;flex-direction:column;gap:.4rem"><span class="chip">MISSION</span><b>Breach the vault</b></div><button class="mbtn2" type="button">Deploy</button></div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><span>Theme variables</span><span>SYN/Theme/Default</span></div>
+        <div class="props">
+          <div class="prop"><label for="tColor">--accent</label><div style="display:flex;gap:.5rem;align-items:center;flex-wrap:wrap"><input type="color" id="tColor" value="#ff5a1f"><input class="hexin" id="tHex" value="#FF5A1F" maxlength="7" aria-label="Accent hex value"></div><span></span></div>
+          <div class="prop"><span class="lbl">Presets</span><div class="swatches" role="group" aria-label="Theme presets">
+            <button class="sw" style="background:#ff5a1f" data-hex="#FF5A1F" aria-pressed="true" aria-label="Forge"></button>
+            <button class="sw" style="background:#ffb000" data-hex="#FFB000" aria-pressed="false" aria-label="Amber"></button>
+            <button class="sw" style="background:#3ee0c4" data-hex="#3EE0C4" aria-pressed="false" aria-label="Cryo"></button>
+            <button class="sw" style="background:#9b7bff" data-hex="#9B7BFF" aria-pressed="false" aria-label="Void"></button>
+            <button class="sw" style="background:#5be38a" data-hex="#5BE38A" aria-pressed="false" aria-label="Toxic"></button>
+          </div><span></span></div>
+          <div class="prop"><label for="tStroke">--stroke</label><input id="tStroke" type="range" min="1" max="6" step="1" value="2"><output id="oStroke">2 px</output></div>
+          <div class="prop"><label for="tRadius">--radius</label><input id="tRadius" type="range" min="0" max="18" step="1" value="2"><output id="oRadius">2 px</output></div>
+          <div class="prop"><label for="tFont">--font</label><select id="tFont" class="hexin" style="width:100%"><option value="display">Teko</option><option value="body">Inter</option><option value="mono">JetBrains Mono</option></select><span></span></div>
+          <div class="prop"><label for="tOvr">Override</label><label style="display:flex;gap:.5rem;align-items:center;color:var(--muted)"><input type="checkbox" id="tOvr"> Shield card uses its own color</label><span></span></div>
+        </div>
+        <div class="panel-head" style="border-top:1px solid var(--line)"><span>theme.json</span><span>export</span></div>
+        <pre class="code" id="themeJson"></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block alt" id="motion">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Motion · curve editor</span>
+      <h2>Sculpt motion <span class="hot">without a timeline</span></h2>
+      <p class="lede">Drag the bezier handles to reshape acceleration. The preview plays the exact curve, and the export panel converts it into tangents for each engine.</p>
+    </div>
+    <div class="curvebox">
+      <div class="curve">
+        <div class="presets" role="group" aria-label="Easing presets">
+          <button data-c="0,0,1,1">Linear</button>
+          <button data-c=".2,.8,.3,1">Ease out</button>
+          <button data-c=".65,0,.35,1">Ease in-out</button>
+          <button data-c=".3,1.6,.5,1">Overshoot</button>
+          <button data-c=".7,0,.2,1">Snap wipe</button>
+        </div>
+        <svg id="curve" viewBox="0 -40 300 380" style="aspect-ratio:300/380" aria-label="Bezier curve editor">
+          <defs><pattern id="gp" width="22" height="22" patternUnits="userSpaceOnUse"><path d="M22 0H0V22" fill="none" stroke="#3a2d27" stroke-width="1"/></pattern></defs>
+          <rect x="40" y="40" width="220" height="220" fill="url(#gp)" stroke="#3a2d27"/>
+          <text x="40" y="282" fill="#a69b92" font-family="JetBrains Mono, monospace" font-size="10">time →</text>
+          <text x="8" y="44" fill="#a69b92" font-family="JetBrains Mono, monospace" font-size="10">1</text>
+          <text x="8" y="262" fill="#a69b92" font-family="JetBrains Mono, monospace" font-size="10">0</text>
+          <line id="l1" stroke="#a69b92" stroke-width="1.5" stroke-dasharray="4 4"/>
+          <line id="l2" stroke="#a69b92" stroke-width="1.5" stroke-dasharray="4 4"/>
+          <path id="cpath" fill="none" stroke="#ff5a1f" stroke-width="3"/>
+          <circle cx="40" cy="260" r="5" fill="#f5f0eb"/><circle cx="260" cy="40" r="5" fill="#f5f0eb"/>
+          <circle id="h1" class="handle" r="9" fill="#3ee0c4" stroke="#14100e" stroke-width="2" tabindex="0" role="slider" aria-label="Handle 1"/>
+          <circle id="h2" class="handle" r="9" fill="#3ee0c4" stroke="#14100e" stroke-width="2" tabindex="0" role="slider" aria-label="Handle 2"/>
+        </svg>
+        <div class="mono" style="font-size:.8rem;color:var(--accent-soft);text-align:center" id="bz">cubic-bezier(.2, .8, .3, 1)</div>
+      </div>
+      <div class="preview">
+        <span class="eyebrow">Live preview</span>
+        <div class="track" id="track"><span class="puck" id="puck"></span></div>
+        <div class="prop"><label for="dur">Duration</label><input id="dur" type="range" min="150" max="1500" step="10" value="600"><output id="oDur">600 ms</output></div>
+        <div class="prop"><label for="stg">Stagger</label><input id="stg" type="range" min="0" max="150" step="5" value="60"><output id="oStg">60 ms</output></div>
+        <div class="stagger" id="stagger"><i></i><i></i><i></i><i></i><i></i></div>
+        <button class="btn btn-ghost btn-sm" id="replay" style="align-self:flex-start">Replay</button>
+        <div class="tabs" role="tablist" aria-label="Export target" style="margin-inline:-1rem">
+          <button class="tab" role="tab" aria-selected="true" data-x="css">CSS</button>
+          <button class="tab" role="tab" aria-selected="false" data-x="unity">Unity</button>
+          <button class="tab" role="tab" aria-selected="false" data-x="unreal">Unreal</button>
+          <button class="tab" role="tab" aria-selected="false" data-x="godot">Godot</button>
+        </div>
+        <pre class="code" id="curveCode" style="margin-inline:-1rem;padding-inline:1rem"></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block loud">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Workflow</span>
+      <h2>From import to export in <span class="hot">four clean steps</span></h2>
+      <p class="lede">No round-tripping between design tools and engine.</p>
+    </div>
+    <ol class="steps" style="--cols:4">
+      <li><span class="n">STEP 1</span><h3>Import a pack</h3><p>Load any SYNAPTICA kit into the browser. Variants, states and animation data arrive intact.</p></li>
+      <li><span class="n">STEP 2</span><h3>Open the panel</h3><p>One control surface for global theme variables and per-element overrides.</p></li>
+      <li><span class="n">STEP 3</span><h3>Adjust live</h3><p>Change colors, curves and typography and watch the whole HUD respond across breakpoints.</p></li>
+      <li><span class="n">STEP 4</span><h3>Export</h3><p>Prefabs with material parameters and animation curves preserved for Unity, Unreal and Godot.</p><span class="tool">theme.json · curves · materials</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="block cta">
+  <div class="wrap">
+    <h2>Style your first HUD <span class="hot">free</span></h2>
+    <p class="lede">Claim the starter asset pack and launch the customizer. No credit card required.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="pricing.html#checkout">Get the starter pack</a>
+      <a class="btn btn-ghost" href="pricing.html">See pricing</a>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer>
+  <div class="wrap">
+    <span><strong>SYNAPTICA UI</strong> is a concept product. UX, UI and tech art by <strong>Iryna Stefanyshyn</strong> · HCID portfolio, Woolf University. Live shaders in WebGL 1 / GLSL ES 1.0.</span>
+    <nav class="flinks" aria-label="Footer">
+      <a href="index.html">Home</a><a href="builder.html">HUD Builder</a><a href="components.html">Components</a><a href="customizer.html">Customizer</a><a href="pricing.html">Pricing</a>
+    </nav>
+  </div>
+</footer>
+<script src="core.js"></script>
+<script>
+(function(){
+const reduce=window.SYN.reduce;const $=id=>document.getElementById(id);
+/* ---------- theme ---------- */
+const mini=$('mini');const T={accent:'#FF5A1F',stroke:2,radius:2,font:'display',ovr:false};
+function applyTheme(){
+  mini.style.setProperty('--t-accent',T.accent);mini.style.setProperty('--t-stroke',T.stroke+'px');mini.style.setProperty('--t-radius',T.radius+'px');mini.style.setProperty('--t-font','var(--'+T.font+')');
+  $('ovrCard').classList.toggle('ovr',T.ovr);$('oStroke').textContent=T.stroke+' px';$('oRadius').textContent=T.radius+' px';
+  $('tColor').value=T.accent.toLowerCase();$('tHex').value=T.accent;
+  document.querySelectorAll('[data-hex]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.hex===T.accent)));
+  const fonts={display:'Teko',body:'Inter',mono:'JetBrains Mono'};
+  const s=x=>'<span class="s">'+x+'</span>';
+  $('themeJson').innerHTML='{\n  '+s('"accent"')+': '+s('"'+T.accent+'"')+',\n  '+s('"strokeWidth"')+': '+T.stroke+',\n  '+s('"cornerRadius"')+': '+T.radius+',\n  '+s('"displayFont"')+': '+s('"'+fonts[T.font]+'"')+',\n  '+s('"overrides"')+': '+(T.ovr?'{ '+s('"HUD_Shield"')+': { '+s('"accent"')+': '+s('"#3EE0C4"')+' } }':'{}')+'\n}';
+}
+$('tColor').addEventListener('input',e=>{T.accent=e.target.value.toUpperCase();applyTheme();});
+$('tHex').addEventListener('change',e=>{let v=e.target.value.trim();if(v[0]!=='#')v='#'+v;if(/^#[0-9a-fA-F]{6}$/.test(v)){T.accent=v.toUpperCase();}applyTheme();});
+document.querySelectorAll('[data-hex]').forEach(b=>b.addEventListener('click',()=>{T.accent=b.dataset.hex;applyTheme();}));
+$('tStroke').addEventListener('input',e=>{T.stroke=+e.target.value;applyTheme();});
+$('tRadius').addEventListener('input',e=>{T.radius=+e.target.value;applyTheme();});
+$('tFont').addEventListener('change',e=>{T.font=e.target.value;applyTheme();});
+$('tOvr').addEventListener('change',e=>{T.ovr=e.target.checked;applyTheme();});
+applyTheme();
+
+/* ---------- curve editor ---------- */
+const C={x1:.2,y1:.8,x2:.3,y2:1};let target='css';
+const X=x=>40+220*x,Y=y=>260-220*y;
+const svg=$('curve');
+function r2(v){return (Math.round(v*100)/100).toString().replace(/^0\./,'.').replace(/^-0\./,'-.');}
+function bez(){return 'cubic-bezier('+r2(C.x1)+', '+r2(C.y1)+', '+r2(C.x2)+', '+r2(C.y2)+')';}
+function drawCurve(){
+  $('cpath').setAttribute('d','M'+X(0)+' '+Y(0)+' C'+X(C.x1)+' '+Y(C.y1)+' '+X(C.x2)+' '+Y(C.y2)+' '+X(1)+' '+Y(1));
+  $('h1').setAttribute('cx',X(C.x1));$('h1').setAttribute('cy',Y(C.y1));$('h2').setAttribute('cx',X(C.x2));$('h2').setAttribute('cy',Y(C.y2));
+  const l1=$('l1'),l2=$('l2');l1.setAttribute('x1',X(0));l1.setAttribute('y1',Y(0));l1.setAttribute('x2',X(C.x1));l1.setAttribute('y2',Y(C.y1));
+  l2.setAttribute('x1',X(1));l2.setAttribute('y1',Y(1));l2.setAttribute('x2',X(C.x2));l2.setAttribute('y2',Y(C.y2));
+  $('h1').setAttribute('aria-valuetext',r2(C.x1)+', '+r2(C.y1));$('h2').setAttribute('aria-valuetext',r2(C.x2)+', '+r2(C.y2));
+  $('bz').textContent=bez();code();
+}
+function code(){
+  const outT=C.x1>0.001?C.y1/C.x1:(C.y1>0?10:0),inT=(1-C.x2)>0.001?(1-C.y2)/(1-C.x2):(C.y2<1?10:0);
+  const dur=+$('dur').value/1000;const k=x=>'<span class="k">'+x+'</span>',c=x=>'<span class="c">'+x+'</span>',s=x=>'<span class="s">'+x+'</span>';
+  const ot=outT.toFixed(3),it=inT.toFixed(3);
+  const out={
+    css:c('/* CSS / web preview */')+'\n.hud-enter {\n  transition: transform '+(+$('dur').value)+'ms '+bez()+';\n  transition-delay: calc(var(--i) * '+$('stg').value+'ms);\n}',
+    unity:c('// Unity · AnimationCurve (tangents from bezier handles)')+'\n'+k('var')+' curve = '+k('new')+' AnimationCurve(\n    '+k('new')+' Keyframe(0f, 0f, 0f, '+(outT/dur).toFixed(3)+'f),\n    '+k('new')+' Keyframe('+dur.toFixed(2)+'f, 1f, '+(inT/dur).toFixed(3)+'f, 0f));\n'+c('// tangent = handle slope / duration'),
+    unreal:c('// Unreal · UCurveFloat with user tangents')+'\nFRichCurve& C = Curve->FloatCurve;\nFKeyHandle A = C.AddKey(0.f, 0.f);\nFKeyHandle B = C.AddKey('+dur.toFixed(2)+'f, 1.f);\nC.SetKeyInterpMode(A, RCIM_Cubic);\nC.GetKey(A).LeaveTangent = '+(outT/dur).toFixed(3)+'f;\nC.GetKey(B).ArriveTangent = '+(inT/dur).toFixed(3)+'f;',
+    godot:c('# Godot 4 · Curve resource')+'\n'+k('var')+' curve := Curve.new()\ncurve.add_point(Vector2(0, 0), 0, '+ot+')\ncurve.add_point(Vector2(1, 1), '+it+', 0)\n'+c('# sample with curve.sample(t) over '+dur.toFixed(2)+' s')
+  };
+  $('curveCode').innerHTML=out[target];
+}
+let dragH=null;
+function svgPt(e){const p=svg.createSVGPoint();p.x=e.clientX;p.y=e.clientY;return p.matrixTransform(svg.getScreenCTM().inverse());}
+['h1','h2'].forEach(id=>{const h=$(id);
+  h.addEventListener('pointerdown',e=>{dragH=id;h.setPointerCapture(e.pointerId);e.preventDefault();});
+  h.addEventListener('keydown',e=>{const d={ArrowLeft:[-.02,0],ArrowRight:[.02,0],ArrowUp:[0,.02],ArrowDown:[0,-.02]}[e.key];if(!d)return;e.preventDefault();
+    const kx=id==='h1'?'x1':'x2',ky=id==='h1'?'y1':'y2';C[kx]=Math.min(1,Math.max(0,C[kx]+d[0]));C[ky]=Math.min(1.5,Math.max(-.5,C[ky]+d[1]));drawCurve();play();});
+});
+svg.addEventListener('pointermove',e=>{if(!dragH)return;const p=svgPt(e);const x=Math.min(1,Math.max(0,(p.x-40)/220)),y=Math.min(1.5,Math.max(-.5,(260-p.y)/220));
+  if(dragH==='h1'){C.x1=x;C.y1=y;}else{C.x2=x;C.y2=y;}drawCurve();});
+svg.addEventListener('pointerup',()=>{if(dragH){dragH=null;play();}});
+document.querySelectorAll('.presets button').forEach(b=>b.addEventListener('click',()=>{const v=b.dataset.c.split(',').map(Number);[C.x1,C.y1,C.x2,C.y2]=v;drawCurve();play();}));
+document.querySelectorAll('[data-x]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-x]').forEach(x=>x.setAttribute('aria-selected','false'));b.setAttribute('aria-selected','true');target=b.dataset.x;code();}));
+let anims=[];
+function play(){
+  anims.forEach(a=>a.cancel());anims=[];if(reduce)return;
+  const dur=+$('dur').value,stg=+$('stg').value,ease=bez();
+  const w=$('track').clientWidth-42;
+  anims.push($('puck').animate([{transform:'translateX(0)'},{transform:'translateX('+w+'px)'}],{duration:dur,easing:ease,iterations:Infinity,direction:'alternate',endDelay:300}));
+  [...$('stagger').children].forEach((el,i)=>anims.push(el.animate([{transform:'scaleX(0)',opacity:.2},{transform:'scaleX(1)',opacity:1}],{duration:dur,easing:ease,delay:i*stg,fill:'both'})));
+}
+$('dur').addEventListener('input',e=>{$('oDur').textContent=e.target.value+' ms';code();});$('dur').addEventListener('change',play);
+$('stg').addEventListener('input',e=>{$('oStg').textContent=e.target.value+' ms';code();});$('stg').addEventListener('change',play);
+$('replay').addEventListener('click',play);
+drawCurve();play();
+})();
+</script>
+
+</body>
+</html>

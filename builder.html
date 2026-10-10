@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HUD Builder · SYNAPTICA</title>
+<meta name="description" content="Drag-and-drop HUD editor with real anchors for Unity, Unreal and Godot.">
+<meta property="og:title" content="HUD Builder · SYNAPTICA">
+<meta property="og:description" content="Drag-and-drop HUD editor with real anchors for Unity, Unreal and Godot.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="index.html"><i></i>SYNAPTICA UI</a>
+    <nav class="links" aria-label="Pages">
+      <a href="builder.html" aria-current="page">HUD Builder</a>
+      <a href="components.html">Components</a>
+      <a href="customizer.html">Customizer</a>
+      <a href="pricing.html">Pricing</a>
+    </nav>
+    <a class="btn btn-primary btn-sm cta-btn" href="pricing.html#checkout">Get started</a>
+    <details class="menu"><summary>MENU</summary><nav aria-label="Pages (mobile)">
+      <a href="index.html">Home</a>
+      <a href="builder.html" aria-current="page">HUD Builder</a>
+      <a href="components.html">Components</a>
+      <a href="customizer.html">Customizer</a>
+      <a href="pricing.html">Pricing</a>
+    </nav></details>
+  </div>
+</header>
+<main>
+<section class="hero sm" data-hue="1.7">
+  <canvas class="heroGL" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">HUD Builder</span>
+      <h1 class="glitch" style="margin-top:1rem">Assemble AAA HUDs<br>in minutes, <span class="hot">not days</span></h1>
+      <p class="lede">Drag, snap and export zero-code interface modules. Every module carries real anchors and pivots, so the layout you build here is the layout Unity, Unreal and Godot receive.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#editor">Start building</a>
+        <a class="btn btn-ghost" href="#layouts">Load a community layout</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="editor">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Precision · live editor</span>
+      <h2>A grid that thinks <span class="hot">before you do</span></h2>
+      <p class="lede">Drag any module. It snaps to the grid and picks the nearest anchor when you let go. Switch the aspect ratio and every element stays pinned to its corner, the same way a RectTransform or a UMG slot behaves.</p>
+    </div>
+    <div class="builder">
+      <div class="toolbar">
+        <div class="seg" role="group" aria-label="Aspect ratio">
+          <button aria-pressed="true" data-ar="16:9">16:9</button>
+          <button aria-pressed="false" data-ar="21:9">21:9</button>
+          <button aria-pressed="false" data-ar="9:16">9:16</button>
+        </div>
+        <label><input type="checkbox" id="snap" checked> Snap 16 px</label>
+        <label><input type="checkbox" id="auto" checked> Auto-anchor</label>
+        <label><input type="checkbox" id="safe" checked> Safe area</label>
+        <span id="refres">Ref 1920 × 1080</span>
+      </div>
+      <div class="screenwrap">
+        <div class="screen grid" id="screen" style="aspect-ratio:16/9">
+          <div class="safe" id="safeBox"><span>TITLE SAFE 90%</span></div>
+          <div class="anchorLine" id="aLine"></div>
+          <div class="anchorDot" id="aDot"></div>
+          <div class="mod" data-id="health" data-name="HUD_Health"><span class="tag">HUD_Health</span>
+            <div class="w-hp"><b id="hpVal">86</b><div class="bars"><div class="bar" id="hpBar"><i style="width:86%"></i></div><div class="bar sh" id="shBar"><i style="width:40%"></i></div></div></div>
+          </div>
+          <div class="mod" data-id="ammo" data-name="HUD_Ammo"><span class="tag">HUD_Ammo</span>
+            <div class="w-ammo"><b id="ammoVal">24</b><small>/ 120 · AR-7</small></div>
+          </div>
+          <div class="mod" data-id="map" data-name="HUD_Minimap"><span class="tag">HUD_Minimap</span>
+            <div class="w-map" id="map"></div>
+          </div>
+          <div class="mod" data-id="compass" data-name="HUD_Compass"><span class="tag">HUD_Compass</span>
+            <div class="w-compass"><div class="tape">N · · · NE · · · E · · · SE · · · S · · · SW · · · W · · · NW · · · N · · · NE · · · E · · · SE · · · S · · · SW · · · W · · · NW · · · </div></div>
+          </div>
+          <div class="mod" data-id="xhair" data-name="HUD_Crosshair"><span class="tag">HUD_Crosshair</span>
+            <div class="w-xhair"></div>
+          </div>
+        </div>
+      </div>
+      <aside class="inspect">
+        <div class="panel-head"><span>Inspector</span><span id="selName">HUD_Health</span></div>
+        <dl class="kv">
+          <dt>Anchor</dt><dd id="kAnchor">0, 1</dd>
+          <dt>Pivot</dt><dd id="kPivot">0, 1</dd>
+          <dt>Anchored pos</dt><dd id="kPos">48, -48</dd>
+          <dt>Preset</dt><dd id="kPreset">Bottom left</dd>
+        </dl>
+        <div class="anchors" role="group" aria-label="Anchor preset" id="anchors"></div>
+        <pre class="code" id="rtCode" style="border-top:1px solid var(--line)"></pre>
+        <div class="mockdata">
+          <span class="eyebrow">Inject live mock stats</span>
+          <div class="prop"><label for="mHp">Health</label><input id="mHp" type="range" min="0" max="100" value="86"><output id="oHp">86</output></div>
+          <div class="prop"><label for="mSh">Shield</label><input id="mSh" type="range" min="0" max="100" value="40"><output id="oSh">40</output></div>
+          <div class="prop"><label for="mAm">Ammo</label><input id="mAm" type="range" min="0" max="30" value="24"><output id="oAm">24</output></div>
+          <button class="btn btn-ghost btn-sm" id="sim" aria-pressed="false">Simulate firefight</button>
+        </div>
+      </aside>
+    </div>
+    <p class="note">Anchored positions are in reference pixels. Unity flips the Y axis, so the snippet converts it for you.</p>
+  </div>
+</section>
+
+<section class="block loud">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Workflow</span>
+      <h2>Build. Compose. <span class="hot">Ship.</span></h2>
+      <p class="lede">A clean pipeline from browser to engine, in three steps.</p>
+    </div>
+    <ol class="steps">
+      <li><span class="n">STEP 1</span><h3>Browse the modular library</h3><p>Health bars, minimaps, ammo counters and crosshairs. Every module is one material with exposed parameters.</p><span class="tool">Library</span></li>
+      <li><span class="n">STEP 2</span><h3>Compose layouts</h3><p>Drag and drop on the grid editor. Anchors, pivots and safe areas are set as you place each module.</p><span class="tool">Editor</span></li>
+      <li><span class="n">STEP 3</span><h3>Export clean</h3><p>Engine-ready prefabs, UMG widgets or Godot scenes, with animation curves and anchors intact.</p><span class="tool">.unitypackage · .uasset · .tscn</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="block" id="layouts">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Community layouts</span>
+      <h2>Start from a <span class="hot">proven layout</span></h2>
+      <p class="lede">Sci-fi dashboards, fantasy bars and competitive overlays. Load one into the editor above and adjust it.</p>
+    </div>
+    <div class="cells layouts">
+      <article class="cell">
+        <div class="thumb" style="background:linear-gradient(135deg,#0e1a1c,#0d0a09)">
+          <i style="left:6%;bottom:10%;width:28%;height:6%;background:#3ee0c4"></i><i style="left:6%;bottom:19%;width:20%;height:4%;background:#5be38a"></i>
+          <i style="right:6%;top:10%;width:18%;aspect-ratio:1;border:2px solid #3ee0c4;border-radius:50%"></i><i style="left:35%;top:6%;width:30%;height:3%;border-bottom:2px solid #3ee0c4"></i>
+          <i style="right:6%;bottom:10%;width:12%;height:10%;background:rgba(62,224,196,.5)"></i>
+        </div>
+        <h3>Orbital ops</h3><p>Sci-fi dashboard with a centred compass and a large radar.</p>
+        <button class="btn btn-ghost btn-sm" data-layout="scifi">Load into editor</button>
+      </article>
+      <article class="cell">
+        <div class="thumb" style="background:linear-gradient(135deg,#1e140a,#0d0a09)">
+          <i style="left:6%;top:10%;width:34%;height:7%;background:#ff5a1f"></i><i style="left:6%;top:20%;width:24%;height:5%;background:#ffb000"></i>
+          <i style="left:6%;bottom:10%;width:14%;aspect-ratio:1;border:2px solid #ffb000;border-radius:50%"></i><i style="right:6%;bottom:10%;width:24%;height:8%;background:rgba(255,176,0,.45)"></i>
+        </div>
+        <h3>Ember crown</h3><p>Fantasy layout: vitals top-left, map bottom-left, hotbar bottom-right.</p>
+        <button class="btn btn-ghost btn-sm" data-layout="fantasy">Load into editor</button>
+      </article>
+      <article class="cell">
+        <div class="thumb" style="background:linear-gradient(135deg,#1c0d10,#0d0a09)">
+          <i style="left:38%;bottom:8%;width:24%;height:6%;background:#ff2a3d"></i><i style="left:6%;top:8%;width:16%;aspect-ratio:1;border:2px solid #f5f0eb"></i>
+          <i style="right:6%;bottom:8%;width:10%;height:9%;background:rgba(245,240,235,.6)"></i><i style="left:42%;top:6%;width:16%;height:5%;background:rgba(245,240,235,.25)"></i>
+        </div>
+        <h3>Ranked clean</h3><p>Competitive overlay: centred vitals, minimal clutter, map top-left.</p>
+        <button class="btn btn-ghost btn-sm" data-layout="comp">Load into editor</button>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="block cta">
+  <div class="wrap">
+    <h2>Try the HUD builder <span class="hot">free</span></h2>
+    <p class="lede">Get the free starter pack. Premium component packs are available in the marketplace.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="pricing.html#checkout">Get the starter pack</a>
+      <a class="btn btn-ghost" href="components.html">Browse the marketplace</a>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer>
+  <div class="wrap">
+    <span><strong>SYNAPTICA UI</strong> is a concept product. UX, UI and tech art by <strong>Iryna Stefanyshyn</strong> · HCID portfolio, Woolf University. Live shaders in WebGL 1 / GLSL ES 1.0.</span>
+    <nav class="flinks" aria-label="Footer">
+      <a href="index.html">Home</a><a href="builder.html">HUD Builder</a><a href="components.html">Components</a><a href="customizer.html">Customizer</a><a href="pricing.html">Pricing</a>
+    </nav>
+  </div>
+</footer>
+<script src="core.js"></script>
+<script>
+(function(){
+const reduce=window.SYN.reduce;const $=id=>document.getElementById(id);
+const screen=$('screen');
+const AR={'16:9':{css:'16/9',w:1920,h:1080,max:'100%'},'21:9':{css:'21/9',w:2520,h:1080,max:'100%'},'9:16':{css:'9/16',w:1080,h:1920,max:'340px'}};
+let ar='16:9';
+const PRESETS={
+  default:{health:[0,1,48,-48],ammo:[1,1,-48,-48],map:[1,0,-48,48],compass:[.5,0,0,40],xhair:[.5,.5,0,0]},
+  scifi:{health:[0,1,64,-64],ammo:[1,1,-64,-64],map:[1,0,-64,64],compass:[.5,0,0,48],xhair:[.5,.5,0,0]},
+  fantasy:{health:[0,0,64,64],ammo:[1,1,-64,-64],map:[0,1,64,-64],compass:[.5,0,0,32],xhair:[.5,.5,0,0]},
+  comp:{health:[.5,1,0,-48],ammo:[1,1,-48,-48],map:[0,0,48,48],compass:[.5,0,0,32],xhair:[.5,.5,0,0]}
+};
+const mods={};
+screen.querySelectorAll('.mod').forEach(el=>{mods[el.dataset.id]={el,name:el.dataset.name,ax:0,ay:0,ox:0,oy:0};});
+function applyPreset(p){Object.entries(PRESETS[p]).forEach(([k,v])=>{const m=mods[k];[m.ax,m.ay,m.ox,m.oy]=v;});layout();}
+let sel='health';
+const NAMES={'0,0':'Top left','0.5,0':'Top center','1,0':'Top right','0,0.5':'Middle left','0.5,0.5':'Center','1,0.5':'Middle right','0,1':'Bottom left','0.5,1':'Bottom center','1,1':'Bottom right'};
+const GODOT={'0,0':'PRESET_TOP_LEFT','0.5,0':'PRESET_CENTER_TOP','1,0':'PRESET_TOP_RIGHT','0,0.5':'PRESET_CENTER_LEFT','0.5,0.5':'PRESET_CENTER','1,0.5':'PRESET_CENTER_RIGHT','0,1':'PRESET_BOTTOM_LEFT','0.5,1':'PRESET_CENTER_BOTTOM','1,1':'PRESET_BOTTOM_RIGHT'};
+function dims(){const W=screen.clientWidth,H=screen.clientHeight;return {W,H,s:W/AR[ar].w};}
+function place(m){const {W,H,s}=dims();const w=m.el.offsetWidth,h=m.el.offsetHeight;
+  const X=m.ax*W+m.ox*s,Y=m.ay*H+m.oy*s;m.el.style.left=(X-m.ax*w)+'px';m.el.style.top=(Y-m.ay*h)+'px';return {X,Y};}
+function layout(){Object.values(mods).forEach(place);inspect();}
+function f(v){return (Math.round(v*100)/100).toString();}
+function inspect(){
+  const m=mods[sel];Object.values(mods).forEach(x=>x.el.classList.toggle('sel',x===m));
+  const {W,H}=dims();const p=place(m);
+  const ax=m.ax*W,ay=m.ay*H;const dot=$('aDot'),line=$('aLine');dot.style.left=ax+'px';dot.style.top=ay+'px';
+  const dx=p.X-ax,dy=p.Y-ay,len=Math.hypot(dx,dy);line.style.left=ax+'px';line.style.top=ay+'px';line.style.width=len+'px';line.style.transform='rotate('+Math.atan2(dy,dx)+'rad)';
+  const key=f(m.ax)+','+f(m.ay);const ox=Math.round(m.ox),oy=Math.round(m.oy);
+  $('selName').textContent=m.name;$('kAnchor').textContent=f(m.ax)+', '+f(m.ay)+' (UMG)';$('kPivot').textContent=f(m.ax)+', '+f(1-m.ay)+' (Unity)';
+  $('kPos').textContent=ox+', '+oy;$('kPreset').textContent=NAMES[key]||'Custom';
+  const k=x=>'<span class="k">'+x+'</span>',c=x=>'<span class="c">'+x+'</span>';
+  $('rtCode').innerHTML=c('// Unity · RectTransform (Y up)')+'\nrt.anchorMin = rt.anchorMax = rt.pivot =\n    '+k('new')+' Vector2('+f(m.ax)+'f, '+f(1-m.ay)+'f);\nrt.anchoredPosition = '+k('new')+' Vector2('+ox+', '+(-oy)+');\n'+
+    c('// Unreal · UMG CanvasPanelSlot')+'\nSlot->SetAnchors(FAnchors('+f(m.ax)+'f, '+f(m.ay)+'f));\nSlot->SetAlignment(FVector2D('+f(m.ax)+'f, '+f(m.ay)+'f));\nSlot->SetPosition(FVector2D('+ox+', '+oy+'));\n'+
+    c('# Godot · Control')+'\nset_anchors_and_offsets_preset('+(GODOT[key]||'PRESET_TOP_LEFT')+')\nposition += Vector2('+ox+', '+oy+')';
+  document.querySelectorAll('#anchors button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.k===key)));
+}
+/* anchor picker */
+const ap=$('anchors');
+[[0,0],[.5,0],[1,0],[0,.5],[.5,.5],[1,.5],[0,1],[.5,1],[1,1]].forEach(([x,y])=>{const b=document.createElement('button');b.dataset.k=f(x)+','+f(y);b.style.setProperty('--x',(x*100)+'%');b.style.setProperty('--y',(y*100)+'%');b.setAttribute('aria-label','Anchor '+NAMES[b.dataset.k]);
+  b.addEventListener('click',()=>{reanchor(mods[sel],x,y);inspect();});ap.appendChild(b);});
+function reanchor(m,nx,ny){const {W,H,s}=dims();const L=parseFloat(m.el.style.left),T=parseFloat(m.el.style.top),w=m.el.offsetWidth,h=m.el.offsetHeight;
+  m.ax=nx;m.ay=ny;m.ox=(L+nx*w-nx*W)/s;m.oy=(T+ny*h-ny*H)/s;}
+/* dragging */
+let drag=null;
+screen.addEventListener('pointerdown',e=>{const el=e.target.closest('.mod');if(!el)return;sel=el.dataset.id;const m=mods[sel];
+  const r=el.getBoundingClientRect();drag={m,dx:e.clientX-r.left,dy:e.clientY-r.top};el.classList.add('drag');el.setPointerCapture(e.pointerId);inspect();e.preventDefault();});
+screen.addEventListener('pointermove',e=>{if(!drag)return;const {W,H,s}=dims();const sr=screen.getBoundingClientRect();const m=drag.m,w=m.el.offsetWidth,h=m.el.offsetHeight;
+  let L=Math.max(0,Math.min(W-w,e.clientX-sr.left-drag.dx)),T=Math.max(0,Math.min(H-h,e.clientY-sr.top-drag.dy));
+  let ox=(L+m.ax*w-m.ax*W)/s,oy=(T+m.ay*h-m.ay*H)/s;
+  if($('snap').checked){ox=Math.round(ox/16)*16;oy=Math.round(oy/16)*16;}
+  m.ox=ox;m.oy=oy;inspect();});
+function end(){if(!drag)return;const m=drag.m;m.el.classList.remove('drag');
+  if($('auto').checked){const {W,H}=dims();const L=parseFloat(m.el.style.left),T=parseFloat(m.el.style.top),cx=L+m.el.offsetWidth/2,cy=T+m.el.offsetHeight/2;
+    const nx=cx<W/3?0:cx>2*W/3?1:.5,ny=cy<H/3?0:cy>2*H/3?1:.5;reanchor(m,nx,ny);if($('snap').checked){m.ox=Math.round(m.ox/16)*16;m.oy=Math.round(m.oy/16)*16;}}
+  drag=null;inspect();}
+screen.addEventListener('pointerup',end);screen.addEventListener('pointercancel',end);
+/* keyboard nudge */
+Object.values(mods).forEach(m=>{m.el.tabIndex=0;m.el.setAttribute('role','button');m.el.setAttribute('aria-label',m.name+', use arrow keys to move');
+  m.el.addEventListener('focus',()=>{sel=m.el.dataset.id;inspect();});
+  m.el.addEventListener('keydown',e=>{const d={ArrowLeft:[-16,0],ArrowRight:[16,0],ArrowUp:[0,-16],ArrowDown:[0,16]}[e.key];if(!d)return;e.preventDefault();m.ox+=d[0];m.oy+=d[1];inspect();});});
+/* toolbar */
+document.querySelectorAll('[data-ar]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-ar]').forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');
+  ar=b.dataset.ar;screen.style.aspectRatio=AR[ar].css;screen.style.maxWidth=AR[ar].max;$('refres').textContent='Ref '+AR[ar].w+' × '+AR[ar].h;requestAnimationFrame(layout);}));
+$('snap').addEventListener('change',()=>{screen.classList.toggle('grid',$('snap').checked);});
+$('safe').addEventListener('change',()=>{$('safeBox').hidden=!$('safe').checked;});
+function setGrid(){const {s}=dims();screen.style.setProperty('--g',(16*s)+'px');}
+new ResizeObserver(()=>{setGrid();layout();}).observe(screen);
+document.querySelectorAll('[data-layout]').forEach(b=>b.addEventListener('click',()=>{applyPreset(b.dataset.layout);document.getElementById('editor').scrollIntoView({behavior:reduce?'auto':'smooth'});}));
+/* mock data */
+function setStats(hp,sh,am){
+  $('mHp').value=hp;$('mSh').value=sh;$('mAm').value=am;$('oHp').textContent=hp;$('oSh').textContent=sh;$('oAm').textContent=am;
+  $('hpVal').textContent=hp;$('hpBar').firstElementChild.style.width=hp+'%';$('hpBar').classList.toggle('low',hp<25);
+  $('shBar').firstElementChild.style.width=sh+'%';$('ammoVal').textContent=am;$('ammoVal').style.color=am<6?'var(--damage)':'';
+}
+['mHp','mSh','mAm'].forEach(id=>$(id).addEventListener('input',()=>setStats(+$('mHp').value,+$('mSh').value,+$('mAm').value)));
+let simT=null;
+$('sim').addEventListener('click',()=>{const on=!simT;$('sim').setAttribute('aria-pressed',String(on));$('sim').textContent=on?'Stop simulation':'Simulate firefight';
+  if(on){simT=setInterval(()=>{let hp=+$('mHp').value,sh=+$('mSh').value,am=+$('mAm').value;
+    if(Math.random()<.55){const dmg=4+Math.floor(Math.random()*10);if(sh>0){sh=Math.max(0,sh-dmg);}else hp=Math.max(0,hp-dmg);}
+    am=am>0?am-1-Math.floor(Math.random()*2):30;if(am<0)am=0;if(hp===0){hp=100;sh=50;}if(Math.random()<.08)sh=Math.min(100,sh+30);
+    setStats(hp,sh,am);},reduce?900:280);}else{clearInterval(simT);simT=null;}});
+/* minimap blips */
+const map=$('map');for(let i=0;i<4;i++){const b=document.createElement('i');b.style.left=(20+Math.random()*60)+'%';b.style.top=(20+Math.random()*60)+'%';map.appendChild(b);}
+applyPreset('default');setGrid();
+if(innerWidth<600){const b=document.querySelector('[data-ar="9:16"]');if(b)b.click();}
+})();
+</script>
+
+</body>
+</html>

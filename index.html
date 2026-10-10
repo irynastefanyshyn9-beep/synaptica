@@ -1,0 +1,320 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SYNAPTICA UI</title>
+<meta name="description" content="Concept HUD asset marketplace with live WebGL shaders. UX, UI and tech art by Iryna Stefanyshyn.">
+<meta property="og:title" content="SYNAPTICA UI">
+<meta property="og:description" content="Concept HUD asset marketplace with live WebGL shaders. UX, UI and tech art by Iryna Stefanyshyn.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="style.css">
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-current="page"><i></i>SYNAPTICA UI</a>
+    <nav class="links" aria-label="Pages">
+      <a href="builder.html">HUD Builder</a>
+      <a href="components.html">Components</a>
+      <a href="customizer.html">Customizer</a>
+      <a href="pricing.html">Pricing</a>
+    </nav>
+    <a class="btn btn-primary btn-sm cta-btn" href="pricing.html#checkout">Get started</a>
+    <details class="menu"><summary>MENU</summary><nav aria-label="Pages (mobile)">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="builder.html">HUD Builder</a>
+      <a href="components.html">Components</a>
+      <a href="customizer.html">Customizer</a>
+      <a href="pricing.html">Pricing</a>
+    </nav></details>
+  </div>
+</header>
+<main>
+<section class="hero scene" id="top">
+  <canvas class="heroGL" aria-label="Real-time raymarched corridor rendered in WebGL"></canvas>
+  <div class="hud" aria-hidden="true">
+    <span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>
+    <div class="live"><i></i>LIVE · WEBGL · <span id="heroFps">60</span> FPS</div>
+    <div class="comp w-compass"><div class="tape">N · · · NE · · · E · · · SE · · · S · · · SW · · · W · · · NW · · · N · · · NE · · · E · · · SE · · · S · · · SW · · · W · · · NW · · · </div></div>
+    <div class="xh w-xhair"></div>
+    <div class="vit"><span>VITALS</span><div class="bar"><i style="width:82%"></i></div><div class="bar sh"><i style="width:46%"></i></div></div>
+    <div class="ammo"><b>24 / 120</b>AR-7 · SEMI</div>
+  </div>
+  <div class="wrap">
+    <div>
+      <div class="credit"><b></b>Master's project · UX, UI and tech art by Iryna Stefanyshyn</div>
+      <h1>AAA game UI<br>without <span class="hot">the grind</span></h1>
+      <p class="lede">A marketplace concept for animated HUD assets, built the way a technical artist ships them: one material per element, every look exposed as a shader parameter, a render budget you can read before you import.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#playground">Open the shader playground</a>
+        <a class="btn btn-ghost" href="#abstract">Read the abstract</a>
+      </div>
+      <p class="fig" style="justify-content:flex-start"><span><b>Fig. 01</b> Background: raymarched corridor, rendered live. Move the cursor to look around.</span></p>
+    </div>
+  </div>
+</section>
+
+<div class="engines">
+  <div class="wrap">
+    <div class="engine"><span>Unity</span><small>URP · Shader Graph · UGUI / UI Toolkit</small></div>
+    <div class="engine"><span>Unreal Engine</span><small>UMG · Material Editor · Material Instances</small></div>
+    <div class="engine"><span>Godot</span><small>CanvasItem shaders · Control scenes</small></div>
+  </div>
+</div>
+
+<section class="block" id="abstract">
+  <div class="wrap abstract">
+    <div>
+      <span class="eyebrow">Abstract</span>
+      <p class="big" style="margin-top:1rem">Game UI is usually delivered as baked video and sprite sheets, so every restyle sends work back to the artist and every import is a guess about performance.</p>
+      <p class="big">SYNAPTICA reframes the HUD marketplace around technical art: assets are shader materials with exposed parameters, layouts carry real engine anchors, and each component publishes its draw calls and memory. The prototypes on this site are working WebGL implementations of those ideas.</p>
+    </div>
+    <dl>
+      <dt>Role</dt><dd>UX research, UI design, technical art, front-end prototype</dd>
+      <dt>Program</dt><dd>MSc Computer Science and Web Design, Woolf University</dd>
+      <dt>Course</dt><dd>Human-Computer Interaction Design (HCID)</dd>
+      <dt>Year</dt><dd>2026</dd>
+      <dt>Tools</dt><dd>Figma, After Effects, GLSL / WebGL, Unity, Unreal, Godot</dd>
+      <dt>Scope</dt><dd>5 pages, 4 live prototypes, design system</dd>
+    </dl>
+  </div>
+</section>
+
+<section class="block alt">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Differentiators</span>
+      <h2>The only marketplace that <span class="hot">ships</span></h2>
+      <p class="lede">Most UI packs are pretty video files. These are engine assets: built for designers to restyle and for engineers to trust.</p>
+    </div>
+    <div class="cells">
+      <article class="cell">
+        <h3>Shader-driven, not baked</h3>
+        <p>Rings, reticles and bars are drawn with signed distance fields in the fragment shader. Stroke, fill, glow and dissolve are parameters, so a restyle never means re-exporting a sprite sheet.</p>
+        <div class="spec">_Fill · _Thickness · _GlowIntensity · _Dissolve</div>
+      </article>
+      <article class="cell">
+        <h3>Budgeted for 60 fps</h3>
+        <p>Every component lists its draw calls, texture memory and overdraw. Shared atlases and material instances keep a full HUD batched, even on mobile.</p>
+        <div class="spec">Target: full HUD ≤ 8 draw calls · ≤ 2 MB VRAM</div>
+      </article>
+      <article class="cell">
+        <h3>Engine-native export</h3>
+        <p>Import a prefab, a UMG widget or a Godot scene with clean hierarchies and named parameters. Motion curves from After Effects arrive as engine curves, not video.</p>
+        <div class="spec">.unitypackage · .uasset · .tscn</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="playground">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Live shader playground · WebGL</span>
+      <h2>Hit it. Heal it. <span class="hot">Break it</span></h2>
+      <p class="lede">This health ring is a single fragment shader running in your browser. Fire game events to see damage chip, screen shake, chromatic split and a shield layer, or drag the raw parameters yourself.</p>
+    </div>
+    <div class="lab">
+      <div class="stage">
+        <div class="viewport" id="viewport">
+          <canvas id="ringGL" aria-label="Animated health ring rendered with a WebGL shader"></canvas>
+          <span class="vp-label tl">HUD_HealthRing.mat</span>
+          <span class="vp-label tr" id="fps">60 FPS</span>
+          <span class="vp-label bl">1 draw call · 0 textures</span>
+          <span class="lowhp" id="lowhp" hidden>LOW HP</span>
+          <div class="hp"><b id="hpNum">72</b><small>HEALTH</small></div>
+        </div>
+        <div class="events" role="group" aria-label="Game events">
+          <button class="ev" id="evHit" style="--c:var(--damage)"><i></i>Take hit<small>OnDamage</small></button>
+          <button class="ev" id="evHeal" style="--c:var(--heal)"><i></i>Heal<small>OnHeal</small></button>
+          <button class="ev" id="evShield" style="--c:var(--shield)"><i></i>Shield<small>OnShield</small></button>
+          <button class="ev" id="evReset" style="--c:var(--muted)"><i></i>Reset<small>OnRespawn</small></button>
+        </div>
+        <div class="palette" aria-label="HUD state palette">
+          <span style="--c:var(--damage)">damage #FF2A3D</span>
+          <span style="--c:var(--heal)">heal #5BE38A</span>
+          <span style="--c:var(--shield)">shield #3EE0C4</span>
+          <span style="--c:var(--warn)">warning #FFB000</span>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><span>Material Inspector</span><span>SYN/HUD/Ring</span></div>
+        <div class="props">
+          <div class="prop"><label for="pFill">_Fill</label><input id="pFill" type="range" min="0" max="1" step="0.01" value="0.72"><output id="oFill">0.72</output></div>
+          <div class="prop"><label for="pThick">_Thickness</label><input id="pThick" type="range" min="0.02" max="0.16" step="0.005" value="0.07"><output id="oThick">0.070</output></div>
+          <div class="prop"><label for="pSeg">_Segments</label><input id="pSeg" type="range" min="0" max="48" step="1" value="24"><output id="oSeg">24</output></div>
+          <div class="prop"><label for="pGlow">_GlowIntensity</label><input id="pGlow" type="range" min="0" max="2" step="0.01" value="0.65"><output id="oGlow">0.65</output></div>
+          <div class="prop"><label for="pDis">_Dissolve</label><input id="pDis" type="range" min="0" max="1" step="0.01" value="0"><output id="oDis">0.00</output></div>
+          <div class="prop"><label for="pScan">_Scanlines</label><input id="pScan" type="range" min="0" max="1" step="0.01" value="0.35"><output id="oScan">0.35</output></div>
+          <div class="prop"><span class="lbl">_Color</span>
+            <div class="swatches" role="group" aria-label="Ring color">
+              <button class="sw" style="background:#ff5a1f" data-c="1,0.35,0.12" aria-pressed="true" aria-label="Vermilion"></button>
+              <button class="sw" style="background:#ffb000" data-c="1,0.69,0" aria-pressed="false" aria-label="Amber"></button>
+              <button class="sw" style="background:#3ee0c4" data-c="0.24,0.88,0.77" aria-pressed="false" aria-label="Teal"></button>
+              <button class="sw" style="background:#9b7bff" data-c="0.61,0.48,1" aria-pressed="false" aria-label="Violet"></button>
+            </div><span></span>
+          </div>
+        </div>
+        <div class="tabs" role="tablist" aria-label="Engine">
+          <button class="tab" role="tab" aria-selected="true" data-e="unity">Unity C#</button>
+          <button class="tab" role="tab" aria-selected="false" data-e="unreal">Unreal C++</button>
+          <button class="tab" role="tab" aria-selected="false" data-e="godot">GDScript</button>
+        </div>
+        <pre class="code" id="code"></pre>
+      </div>
+    </div>
+    <p class="fig"><span><b>Fig. 02</b> SDF health ring. One fragment shader, one draw call, no textures.</span><span>WebGL 1 · GLSL ES 1.0</span></p>
+  </div>
+</section>
+
+<section class="block loud">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Explore the product</span>
+      <h2>Four tools, <span class="hot">one pipeline</span></h2>
+    </div>
+    <div class="cells c4">
+      <a class="cell" href="builder.html"><span class="n">BUILDER</span><h3>HUD Builder</h3><p>Drag modules onto a snapping grid and watch the anchors hold across 16:9, 21:9 and 9:16.</p><span class="go">Open builder →</span></a>
+      <a class="cell" href="components.html"><span class="n">LIBRARY</span><h3>Animated components</h3><p>Motion packs with layered sources, editable timelines and a published render budget.</p><span class="go">Browse packs →</span></a>
+      <a class="cell" href="customizer.html"><span class="n">CUSTOMIZER</span><h3>Style customizer</h3><p>Global theme variables, per-element overrides and a curve editor that exports engine curves.</p><span class="go">Open customizer →</span></a>
+      <a class="cell" href="pricing.html"><span class="n">LICENSING</span><h3>Pricing</h3><p>Royalty-free, perpetual assets. Free for prototyping, $19 per seat for commercial work.</p><span class="go">Compare plans →</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="block alt">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Art-to-engine pipeline</span>
+      <h2>From Figma frame to <span class="hot">in-game widget</span></h2>
+      <p class="lede">Every asset moves through the same six steps, in this order.</p>
+    </div>
+    <ol class="steps" style="--cols:6">
+      <li><span class="n">01</span><h3>Design</h3><p>Layout, states and spacing on an 8px grid.</p><span class="tool">Figma</span></li>
+      <li><span class="n">02</span><h3>Animate</h3><p>Timing and easing, exported as keyframe curves.</p><span class="tool">After Effects</span></li>
+      <li><span class="n">03</span><h3>Convert</h3><p>Vectors become SDF or MSDF data and pack into one atlas.</p><span class="tool">SDF bake · atlas</span></li>
+      <li><span class="n">04</span><h3>Shade</h3><p>One master material with named, exposed parameters.</p><span class="tool">Shader Graph · Material Editor</span></li>
+      <li><span class="n">05</span><h3>Assemble</h3><p>Prefab, widget or scene with a clean hierarchy.</p><span class="tool">Unity · Unreal · Godot</span></li>
+      <li><span class="n">06</span><h3>Profile</h3><p>Check draw calls, batching and overdraw against the budget.</p><span class="tool">Frame Debugger · Insights</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="block cta">
+  <div class="wrap">
+    <h2>Start building <span class="hot">faster</span></h2>
+    <p class="lede">Claim the free starter pack: fifteen animated HUD components with their shaders, curves and budgets included.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="pricing.html#checkout">Get the starter pack</a>
+      <a class="btn btn-ghost" href="builder.html">Open the builder</a>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer>
+  <div class="wrap">
+    <span><strong>SYNAPTICA UI</strong> is a concept product. UX, UI and tech art by <strong>Iryna Stefanyshyn</strong> · HCID portfolio, Woolf University. Live shaders in WebGL 1 / GLSL ES 1.0.</span>
+    <nav class="flinks" aria-label="Footer">
+      <a href="index.html">Home</a><a href="builder.html">HUD Builder</a><a href="components.html">Components</a><a href="customizer.html">Customizer</a><a href="pricing.html">Pricing</a>
+    </nav>
+  </div>
+</footer>
+<script src="core.js"></script>
+<script>
+(function(){
+const {mk,fit,NOISE,reduce,onFrame}=window.SYN;const $=id=>document.getElementById(id);
+const ring=mk($('ringGL'),`precision mediump float;uniform vec2 r,shake;uniform float t,fill,ghost,thick,seg,glow,dis,scan,flash,chroma,shield,low;uniform vec3 col,fcol;${NOISE}
+vec3 ringC(vec2 p){
+ float R=.34;float d=abs(length(p)-R)-thick*.5;
+ float an=fract(atan(p.x,p.y)/6.2831853+1.);
+ float g=1.;if(seg>.5){float f=fract(an*seg);g=smoothstep(0.,.04,f)*smoothstep(1.,.92,f);}
+ float aa=1.5/min(r.x,r.y);
+ float shape=(1.-smoothstep(-aa,aa,d))*g;
+ float on=step(an,fill);float gh=step(an,ghost)*(1.-on);
+ float nv=fbm(p*9.+t*.3);float alive=step(dis,nv);
+ float edge=(1.-smoothstep(0.,.05,nv-dis))*step(.001,dis)*alive;
+ float pulse=low*(.5+.5*sin(t*9.));
+ vec3 cc=mix(col,vec3(1.,.08,.12),low);
+ vec3 c=vec3(.05,.04,.035);
+ c=mix(c,vec3(.16,.12,.1),shape*(1.-on));
+ c=mix(c,vec3(1.,.93,.86),shape*gh*.9);
+ c=mix(c,cc,shape*on*alive);
+ c+=vec3(1.,.8,.5)*edge*shape*on*1.5;
+ c+=cc*exp(-max(d,0.)*28.)*(glow+pulse*1.3)*on*alive*.6;
+ float R2=R+thick*.5+.055;float d2=abs(length(p)-R2)-.011;
+ float sh=(1.-smoothstep(-aa,aa,d2))*step(.18,fract(an*36.-t*.4))*shield;
+ vec3 sc=vec3(.24,.88,.77);
+ c=mix(c,sc,sh*.95);c+=sc*exp(-max(d2,0.)*36.)*shield*(.35+.15*sin(t*4.));
+ c+=vec3(.65,.6,.57)*step(abs(length(p)-.24),.002)*step(.75,fract(an*60.))*.45;
+ c+=fcol*flash*(shape*.85+exp(-max(d,0.)*9.)*.4);
+ c+=vec3(1.,.05,.1)*pulse*.08*smoothstep(.55,.15,length(p));
+ return c;}
+void main(){vec2 p=(gl_FragCoord.xy-.5*r)/min(r.x,r.y)+shake;vec3 c;
+ if(chroma>.0005){c=vec3(ringC(p+vec2(chroma,0.)).r,ringC(p).g,ringC(p-vec2(chroma,0.)).b);}else{c=ringC(p);}
+ c*=1.-scan*.45*(.5+.5*sin(gl_FragCoord.y*2.2-t*6.));
+ gl_FragColor=vec4(c,1.);}`);
+const P={fill:.72,ghost:.72,thick:.07,seg:24,glow:.65,dis:0,scan:.35,col:[1,.35,.12],flash:0,fcol:[1,.1,.15],chroma:0,shield:0,low:0,shakeAmt:0};
+const ids={pFill:['fill',2],pThick:['thick',3],pSeg:['seg',0],pGlow:['glow',2],pDis:['dis',2],pScan:['scan',2]};
+const out={pFill:'oFill',pThick:'oThick',pSeg:'oSeg',pGlow:'oGlow',pDis:'oDis',pScan:'oScan'};
+let engine='unity',lastEvent='',lastCode='';
+function code(){
+  const f=P.fill.toFixed(2),gh=P.ghost.toFixed(2),g=P.glow.toFixed(2),d=P.dis.toFixed(2),s=P.seg,sd=P.shield.toFixed(2);
+  const c=P.col.map(v=>v.toFixed(2)).join(', ');
+  const k=x=>'<span class="k">'+x+'</span>',n=x=>'<span class="s">'+x+'</span>',cm=x=>'<span class="c">'+x+'</span>';
+  if(engine==='unity') return (lastEvent?cm('// '+lastEvent)+'\n':'')+cm('// Unity · URP · MaterialPropertyBlock keeps batching')+'\n'+
+    k('var')+' mpb = '+k('new')+' MaterialPropertyBlock();\nring.GetPropertyBlock(mpb);\nmpb.SetFloat('+n('"_Fill"')+', '+f+'f);\nmpb.SetFloat('+n('"_Ghost"')+', '+gh+'f);\nmpb.SetFloat('+n('"_Shield"')+', '+sd+'f);\nmpb.SetFloat('+n('"_Segments"')+', '+s+');\nmpb.SetFloat('+n('"_GlowIntensity"')+', '+g+'f);\nmpb.SetFloat('+n('"_Dissolve"')+', '+d+'f);\nmpb.SetColor('+n('"_Color"')+', '+k('new')+' Color('+c+'));\nring.SetPropertyBlock(mpb);';
+  if(engine==='unreal') return (lastEvent?cm('// '+lastEvent)+'\n':'')+cm('// Unreal · Dynamic Material Instance on a UMG Image')+'\n'+
+    'UMaterialInstanceDynamic* MID = RingImage->GetDynamicMaterial();\nMID->SetScalarParameterValue('+n('TEXT("Fill")')+', '+f+'f);\nMID->SetScalarParameterValue('+n('TEXT("Ghost")')+', '+gh+'f);\nMID->SetScalarParameterValue('+n('TEXT("Shield")')+', '+sd+'f);\nMID->SetScalarParameterValue('+n('TEXT("Segments")')+', '+s+'.f);\nMID->SetScalarParameterValue('+n('TEXT("GlowIntensity")')+', '+g+'f);\nMID->SetScalarParameterValue('+n('TEXT("Dissolve")')+', '+d+'f);\nMID->SetVectorParameterValue('+n('TEXT("Color")')+', FLinearColor('+c+'));';
+  return (lastEvent?cm('# '+lastEvent)+'\n':'')+cm('# Godot 4 · ShaderMaterial on a TextureRect')+'\n'+
+    k('var')+' mat := $Ring.material '+k('as')+' ShaderMaterial\nmat.set_shader_parameter('+n('"fill"')+', '+f+')\nmat.set_shader_parameter('+n('"ghost"')+', '+gh+')\nmat.set_shader_parameter('+n('"shield"')+', '+sd+')\nmat.set_shader_parameter('+n('"segments"')+', '+s+')\nmat.set_shader_parameter('+n('"glow_intensity"')+', '+g+')\nmat.set_shader_parameter('+n('"dissolve"')+', '+d+')\nmat.set_shader_parameter('+n('"color"')+', Color('+c+'))';
+}
+function syncUI(){
+  const html=code();if(html!==lastCode){$('code').innerHTML=html;lastCode=html;}
+  $('hpNum').textContent=Math.round(P.fill*100);$('pFill').value=P.fill;$('oFill').textContent=P.fill.toFixed(2);
+  $('lowhp').hidden=!(P.fill<.25);
+}
+const E={outCubic:x=>1-Math.pow(1-x,3),outBack:x=>{const c=1.70158;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2);}};
+let tw=[];
+function tween(k,to,dur,ease,delay){tw=tw.filter(a=>a.k!==k);if(reduce){P[k]=to;return;}tw.push({k,from:null,to,dur,ease:E[ease||'outCubic'],start:performance.now()+(delay||0)});}
+function step(now){tw=tw.filter(a=>{if(now<a.start)return true;if(a.from===null)a.from=P[a.k];const x=Math.min(1,(now-a.start)/a.dur);P[a.k]=a.from+(a.to-a.from)*a.ease(x);return x<1;});}
+function floater(text,color){const s=document.createElement('span');s.className='floater';s.textContent=text;s.style.color=color;s.style.marginLeft=(Math.random()*60-30)+'px';$('viewport').appendChild(s);setTimeout(()=>s.remove(),1100);}
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+function after(){syncUI();if(reduce){P.low=P.fill<.25?1:0;draw(0);}}
+$('evHit').addEventListener('click',()=>{
+  let amt=.1+Math.random()*.12;const shielded=P.shield>.5;
+  if(shielded){amt*=.4;tween('shield',0,350);P.fcol=[.24,.88,.77];}else{P.fcol=[1,.1,.15];}
+  const before=P.fill;P.ghost=Math.max(P.ghost,before);P.fill=Math.max(0,before-amt);
+  tween('ghost',P.fill,650,'outCubic',450);
+  P.flash=1;tween('flash',0,380);P.chroma=shielded?.008:.028;tween('chroma',0,420);P.shakeAmt=shielded?.012:.035;tween('shakeAmt',0,320);
+  floater('-'+Math.round(amt*100),shielded?css('--shield'):css('--damage'));
+  lastEvent=shielded?'OnDamage: shield absorbed 60%, _Shield -> 0':'OnDamage: _Fill drops now, _Ghost eases down after 0.45 s';
+  if(reduce)P.ghost=P.fill;after();
+});
+$('evHeal').addEventListener('click',()=>{
+  const to=Math.min(1,P.fill+.15+Math.random()*.1);floater('+'+Math.round((to-P.fill)*100),css('--heal'));
+  P.ghost=to;tween('fill',to,600,'outBack');P.fcol=[.36,.89,.54];P.flash=.9;tween('flash',0,500);
+  lastEvent='OnHeal: _Ghost previews target, _Fill follows with ease-out-back';after();
+});
+$('evShield').addEventListener('click',()=>{
+  const on=P.shield<.5;tween('shield',on?1:0,550,on?'outBack':'outCubic');P.fcol=[.24,.88,.77];P.flash=.6;tween('flash',0,400);
+  lastEvent=on?'OnShield: _Shield 0 -> 1, ease-out-back':'OnShield: _Shield 1 -> 0';after();
+});
+$('evReset').addEventListener('click',()=>{tween('fill',.72,700);tween('ghost',.72,700);tween('shield',0,300);tween('dis',0,300);lastEvent='OnRespawn: values return to defaults';after();});
+Object.keys(ids).forEach(id=>{const el=$(id);el.addEventListener('input',()=>{const [k,dp]=ids[id];P[k]=parseFloat(el.value);if(k==='fill')P.ghost=P.fill;$(out[id]).textContent=dp?P[k].toFixed(dp):P[k];lastEvent='';after();});});
+document.querySelectorAll('.sw').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.sw').forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');P.col=b.dataset.c.split(',').map(Number);after();}));
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(x=>x.setAttribute('aria-selected','false'));b.setAttribute('aria-selected','true');engine=b.dataset.e;syncUI();}));
+syncUI();
+function draw(ms){if(!ring)return;const c=ring.gl.canvas,g=ring.gl;fit(c,2);g.viewport(0,0,c.width,c.height);g.useProgram(ring.pr);
+  g.uniform2f(ring.u('r'),c.width,c.height);g.uniform1f(ring.u('t'),ms/1000);
+  ['fill','ghost','thick','seg','glow','dis','scan','flash','chroma','shield','low'].forEach(k=>g.uniform1f(ring.u(k),P[k]));
+  g.uniform3f(ring.u('col'),P.col[0],P.col[1],P.col[2]);g.uniform3f(ring.u('fcol'),P.fcol[0],P.fcol[1],P.fcol[2]);
+  g.uniform2f(ring.u('shake'),(Math.random()-.5)*P.shakeAmt,(Math.random()-.5)*P.shakeAmt);g.drawArrays(g.TRIANGLES,0,3);}
+let last=performance.now(),frames=0,acc=0,busy=false;
+if(reduce){draw(4000);$('fps').textContent='STATIC';addEventListener('resize',()=>draw(4000));}
+else onFrame(ms=>{P.low+=((P.fill<.25?1:0)-P.low)*.08;const active=tw.length>0;step(ms);if(active||busy)syncUI();busy=active;draw(ms);
+  frames++;acc+=ms-last;last=ms;if(acc>500){$('fps').textContent=Math.round(frames*1000/acc)+' FPS';frames=0;acc=0;}});
+})();
+</script>
+
+
+</body></html>
