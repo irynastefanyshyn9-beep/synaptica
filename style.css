@@ -604,3 +604,15 @@ section.alt .cell{background:var(--bg)}
  .iso-keys{display:none}
 }
 @media (prefers-reduced-motion:reduce){.iso-card,.iso-pool::before{transition:none}.iso-info.swap > *{animation:none}.iso-hero.fired .iso-view{animation:none}}
+
+/* abstract v2 — calm, refined type */
+.abs2{grid-template-columns:1.35fr .65fr;align-items:start}
+.abs2 .eyebrow{letter-spacing:.24em}
+.abs2-q{margin-top:1.4rem;font-family:var(--display);font-weight:500;font-stretch:100%;font-size:clamp(1.55rem,2.6vw,2.25rem);line-height:1.22;letter-spacing:-.018em;color:var(--fg);max-width:30ch;text-wrap:pretty}
+.abs2-q em{font-style:normal;color:var(--accent-soft)}
+.abs2-p{margin-top:1.4rem;font:300 clamp(1rem,1.2vw,1.08rem)/1.75 var(--body);color:var(--muted);max-width:56ch}
+.abs2 dl{grid-template-columns:5.5rem 1fr;gap:0;padding-top:0;border-top:1px solid var(--line);font-size:.95rem}
+.abs2 dt,.abs2 dd{padding:.85rem 0;border-bottom:1px solid var(--line)}
+.abs2 dt{font:500 .64rem var(--mono);letter-spacing:.18em;color:var(--muted);padding-top:1.05rem}
+.abs2 dd{color:var(--fg);font-weight:400;line-height:1.5}
+@media (max-width:860px){.abs2{grid-template-columns:1fr}}
