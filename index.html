@@ -33,42 +33,41 @@
   </div>
 </header>
 <main>
-<section class="hero scene center" id="top">
-  <canvas class="heroGL" aria-label="Real-time raymarched corridor rendered in WebGL"></canvas>
+<section class="lo-hero" id="top">
+  <canvas id="loGL" aria-label="3D operator holding the selected weapon. Drag to rotate, click to fire."></canvas>
   <div class="hud" aria-hidden="true">
     <span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>
     <div class="live"><i></i>LIVE · WEBGL · <span id="heroFps">60</span> FPS</div>
-    <div class="comp w-compass"><div class="tape">N · · · NE · · · E · · · SE · · · S · · · SW · · · W · · · NW · · · N · · · NE · · · E · · · SE · · · S · · · SW · · · W · · · NW · · · </div></div>
   </div>
-  <div class="wrap hc">
-    <span class="eyebrow ln">Master's project · UX, UI &amp; tech art by Iryna Stefanyshyn</span>
-    <h1>AAA game UI<br><span class="dim">without the grind</span></h1>
-    <p class="lede">A marketplace for animated HUD assets, built the way a technical artist ships them: one material per element, every look a shader parameter, a render budget you can read before you import.</p>
-    <div class="actions">
-      <a class="btn btn-primary" href="components.html#gallery">Play with live assets</a>
-      <a class="btn btn-ghost" href="#playground">Open the shader playground</a>
-    </div>
-    <div class="hstage">
-      <span class="ghost" aria-hidden="true">HUD</span>
-      <span class="hlabel" aria-hidden="true"><i></i><em>01</em> Live material</span>
-      <span class="hcount" aria-hidden="true"><span>Assets</span><b>08</b></span>
-      <span class="br b1" aria-hidden="true"></span><span class="br b2" aria-hidden="true"></span><span class="br b3" aria-hidden="true"></span><span class="br b4" aria-hidden="true"></span>
-      <button class="holo" type="button" aria-label="Live health ring shader on a tilting card. Press to deal damage.">
-        <span class="holo-in">
-          <canvas id="holoGL" aria-hidden="true"></canvas>
-          <span class="holo-glare"></span>
-          <span class="holo-top"><span>SYN/HUD/Ring</span><span>MAT · 1 DC</span></span>
-          <span class="holo-val"><b id="holoHp">72</b>HEALTH</span>
-          <span class="holo-hint">Tilt me · click to hit</span>
-        </span>
-      </button>
-      <div class="hminis" aria-hidden="true">
-        <div class="hmini"><span class="mini-k"><i></i><em>02</em> Render budget</span><b>1 <small>draw call</small></b><span class="mini-row"><i style="width:12%"></i></span><span class="mini-s">0 KB textures · ≤ 2 MB full HUD</span></div>
-        <div class="hmini mid"><span class="mini-k"><i></i><em>03</em> Frame time</span><b><span id="heroFps2">60</span> <small>fps</small></b><svg viewBox="0 0 160 40" preserveAspectRatio="none"><polyline id="fpsLine" fill="none" stroke="currentColor" stroke-width="1.5" points=""/></svg></div>
-        <div class="hmini"><span class="mini-k"><i></i><em>04</em> Library</span><b>8 <small>live shaders</small></b><span class="mini-s">Combat · Navigation · Status</span></div>
+  <div class="wrap lo-grid">
+    <div class="lo-text">
+      <span class="eyebrow ln-l"><em>01</em> Master's project · Tech art</span>
+      <h1>AAA game UI<br><span class="dim">without the grind</span></h1>
+      <p class="lede">A marketplace for animated HUD assets, built the way a technical artist ships them: every look a shader parameter, every asset one draw call.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="components.html#gallery">Play with live assets</a>
+        <a class="btn btn-ghost" href="#playground">Shader playground</a>
       </div>
+      <p class="iso-by">Designed &amp; coded by <b>Iryna Stefanyshyn</b></p>
     </div>
+    <aside class="lo-panel" aria-label="Loadout">
+      <div class="lo-head"><span class="side-k"><i></i>Loadout · Primary</span><span class="lo-state" id="loState">EQUIPPED</span></div>
+      <div class="lo-list" id="loList" role="listbox" aria-label="Weapons — press 1 to 5" tabindex="0"></div>
+      <div class="lo-sel">
+        <span class="lo-type" id="loType">Rifle</span>
+        <h2 id="loName">AR-7 Ember</h2>
+        <div class="lo-stats">
+          <div class="lo-stat"><span>Damage</span><div><i></i></div><b>0</b></div>
+          <div class="lo-stat"><span>Fire rate</span><div><i></i></div><b>0</b></div>
+          <div class="lo-stat"><span>Range</span><div><i></i></div><b>0</b></div>
+          <div class="lo-stat"><span>Mobility</span><div><i></i></div><b>0</b></div>
+        </div>
+        <div class="lo-ammo"><b id="loAmmo">30</b><span id="loRes">/ 120</span><em id="loRpm">680 RPM</em></div>
+        <div class="lo-btns"><button class="btn btn-primary btn-sm" type="button" id="loFire">Fire</button><button class="btn btn-ghost btn-sm" type="button" id="loReload">Reload</button></div>
+      </div>
+    </aside>
   </div>
+  <div class="lo-keys" aria-hidden="true"><span><kbd>1</kbd>–<kbd>5</kbd> Switch weapon</span><span><kbd>F</kbd> / click Fire</span><span><kbd>R</kbd> Reload</span><span><kbd>⟷</kbd> Drag to rotate</span></div>
 </section>
 <div class="ticker-wrap" aria-hidden="true"><div class="ticker"><div class="tk-track"><span>One draw call</span><b>◆</b><span>Shader-driven, not baked</span><b>◆</b><span>Unity · Unreal · Godot</span><b>◆</b><span>Budgeted for 60 fps</span><b>◆</b><span>Built by a tech artist</span><b>◆</b><span>One draw call</span><b>◆</b><span>Shader-driven, not baked</span><b>◆</b><span>Unity · Unreal · Godot</span><b>◆</b><span>Budgeted for 60 fps</span><b>◆</b><span>Built by a tech artist</span><b>◆</b><span>One draw call</span><b>◆</b><span>Shader-driven, not baked</span><b>◆</b><span>Unity · Unreal · Godot</span><b>◆</b><span>Budgeted for 60 fps</span><b>◆</b><span>Built by a tech artist</span><b>◆</b><span>One draw call</span><b>◆</b><span>Shader-driven, not baked</span><b>◆</b><span>Unity · Unreal · Godot</span><b>◆</b><span>Budgeted for 60 fps</span><b>◆</b><span>Built by a tech artist</span><b>◆</b></div></div></div>
 
@@ -239,7 +238,7 @@
   </div>
 </footer>
 <script src="core.js"></script>
-<script src="hero.js"></script>
+<script type="module" src="loadout.js"></script>
 <script>
 (function(){
 const {mk,fit,NOISE,reduce,onFrame}=window.SYN;const $=id=>document.getElementById(id);
