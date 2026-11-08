@@ -19,7 +19,7 @@ renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
 const scene = new THREE.Scene();
-scene.fog = new THREE.Fog(0x0b0b0c, 7, 16);
+scene.fog = new THREE.Fog(0x100c0a, 7, 16);
 const cam = new THREE.PerspectiveCamera(30, 1, .1, 50);
 
 /* ---------- lights ---------- */
@@ -27,7 +27,7 @@ scene.add(new THREE.HemisphereLight(0x9aa4b0, 0x140c08, .55));
 const key = new THREE.DirectionalLight(0xffe2cc, 3.2); key.position.set(-3, 5, 4); key.castShadow = true;
 key.shadow.mapSize.set(1024,1024); key.shadow.camera.left=-2; key.shadow.camera.right=2; key.shadow.camera.top=3; key.shadow.camera.bottom=-1; key.shadow.bias=-0.0005;
 scene.add(key);
-const rim = new THREE.DirectionalLight(0xff5a1f, 3.2); rim.position.set(3, 3, -3); scene.add(rim);
+const rim = new THREE.DirectionalLight(0xff3d00, 3.2); rim.position.set(3, 3, -3); scene.add(rim);
 const fill = new THREE.DirectionalLight(0x3ee0c4, .9); fill.position.set(-4, 2, -3); scene.add(fill);
 const flashLight = new THREE.PointLight(0xffa060, 0, 3, 2); scene.add(flashLight);
 const front = new THREE.DirectionalLight(0xdfe6ee, 1.1); front.position.set(1, 2, 6); scene.add(front);
@@ -38,7 +38,7 @@ const M = {
   armor: new THREE.MeshStandardMaterial({color:0x4b525a, roughness:.42, metalness:.55}),
   dark:  new THREE.MeshStandardMaterial({color:0x121417, roughness:.6, metalness:.4}),
   skin:  new THREE.MeshStandardMaterial({color:0x25282c, roughness:.9}),
-  glow:  new THREE.MeshStandardMaterial({color:0xff5a1f, emissive:0xff5a1f, emissiveIntensity:2.6, roughness:.3}),
+  glow:  new THREE.MeshStandardMaterial({color:0xff3d00, emissive:0xff3d00, emissiveIntensity:2.6, roughness:.3}),
   gun:   new THREE.MeshStandardMaterial({color:0x5a6068, roughness:.3, metalness:.85}),
   gun2:  new THREE.MeshStandardMaterial({color:0x17191c, roughness:.5, metalness:.6}),
   lens:  new THREE.MeshStandardMaterial({color:0x3ee0c4, emissive:0x3ee0c4, emissiveIntensity:1.4, roughness:.1}),
@@ -127,12 +127,12 @@ scene.add(flash);
 /* ---------- floor & pedestal ---------- */
 const floor = new THREE.Mesh(new THREE.CircleGeometry(6,64), new THREE.ShadowMaterial({opacity:.55}));
 floor.rotation.x=-Math.PI/2; floor.receiveShadow=true; scene.add(floor);
-const ringMat = new THREE.MeshBasicMaterial({color:0xff5a1f, transparent:true, opacity:.85});
+const ringMat = new THREE.MeshBasicMaterial({color:0xff3d00, transparent:true, opacity:.85});
 const ring = new THREE.Mesh(new THREE.RingGeometry(.62,.64,96), ringMat); ring.rotation.x=-Math.PI/2; ring.position.y=.003; scene.add(ring);
 const ring2 = new THREE.Mesh(new THREE.RingGeometry(.78,.785,96,1,0,Math.PI*1.4), new THREE.MeshBasicMaterial({color:0xecebe7, transparent:true, opacity:.35})); ring2.rotation.x=-Math.PI/2; ring2.position.y=.003; scene.add(ring2);
 const ticks = new THREE.Group(); scene.add(ticks);
 for(let k=0;k<48;k++){ const t=new THREE.Mesh(new THREE.PlaneGeometry(.012,k%4?.04:.08), new THREE.MeshBasicMaterial({color:0xecebe7, transparent:true, opacity:k%4?.25:.6})); const a=k/48*Math.PI*2; t.position.set(Math.cos(a)*.9,.004,Math.sin(a)*.9); t.rotation.x=-Math.PI/2; t.rotation.z=-a+Math.PI/2; ticks.add(t); }
-const glowDisc = new THREE.Mesh(new THREE.CircleGeometry(.62,64), new THREE.MeshBasicMaterial({color:0xff5a1f, transparent:true, opacity:.10})); glowDisc.rotation.x=-Math.PI/2; glowDisc.position.y=.002; scene.add(glowDisc);
+const glowDisc = new THREE.Mesh(new THREE.CircleGeometry(.62,64), new THREE.MeshBasicMaterial({color:0xff3d00, transparent:true, opacity:.10})); glowDisc.rotation.x=-Math.PI/2; glowDisc.position.y=.002; scene.add(glowDisc);
 const grid = new THREE.GridHelper(14, 28, 0x3a2a22, 0x1f1a17); grid.position.y=.001; grid.material.transparent=true; grid.material.opacity=.45; scene.add(grid);
 
 /* ---------- pose ---------- */
