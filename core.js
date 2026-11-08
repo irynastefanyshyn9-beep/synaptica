@@ -89,7 +89,8 @@ void main(){
  col*=smoothstep(1.3,.3,length(g-.5));col+=(h(gl_FragCoord.xy+fract(t*7.)*91.)-.5)*.03;
  gl_FragColor=vec4(col,1.);}`;
   const isScene=heroEl.classList.contains('scene');
-  const hero=mk(cv,isScene?SCENE:SMOKE);
+  const SC=heroEl.classList.contains('center')?SCENE.replace('r.x>r.y?.38:0.','0.'):SCENE;
+  const hero=mk(cv,isScene?SC:SMOKE);
   const M={x:.72,y:.5,tx:.72,ty:.5};
   heroEl.addEventListener('pointermove',e=>{const b=heroEl.getBoundingClientRect();M.tx=(e.clientX-b.left)/b.width;M.ty=1-(e.clientY-b.top)/b.height;});
   heroEl.addEventListener('pointerleave',()=>{M.tx=.72;M.ty=.5;});
