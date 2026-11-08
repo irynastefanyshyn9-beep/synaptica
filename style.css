@@ -392,3 +392,26 @@ section.alt .cell{background:var(--bg)}
 .hud .vit .bar i{background:var(--fg)}
 .hud .vit .bar.sh i{background:var(--accent)}
 @media (max-width:860px){.hero.scene .wrap{grid-template-columns:1fr;min-height:0}.hud .comp,.hud .xh,.hud .vit{display:none}.hud .ammo{bottom:22px;right:30px}.hud .ammo b{font-size:1.4rem}.hud .live{right:40px}}
+
+/* live asset gallery (components.html) */
+.filters{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.4rem}
+.filters button{font:500 .76rem var(--mono);letter-spacing:.08em;text-transform:uppercase;background:transparent;color:var(--muted);border:1px solid var(--line);padding:.55rem .9rem;cursor:pointer}
+.filters button:hover{color:var(--fg);border-color:var(--muted)}
+.filters button[aria-pressed=true]{color:var(--ink);background:var(--accent);border-color:var(--accent)}
+.assets{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+@media (max-width:1080px){.assets{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.assets{grid-template-columns:1fr}}
+.asset{background:var(--surface);display:flex;flex-direction:column;min-width:0}
+.asset-view{position:relative;aspect-ratio:1/1;background:#0d0a09;border-bottom:1px solid var(--line);cursor:crosshair;touch-action:manipulation}
+.asset-view canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.asset-tag{position:absolute;top:.6rem;left:.7rem;font:500 .64rem var(--mono);letter-spacing:.08em;color:var(--muted);pointer-events:none}
+.asset-tag b{color:var(--heal);font-weight:500}
+.asset-read{position:absolute;bottom:.6rem;right:.7rem;font:500 .8rem var(--mono);color:var(--fg);pointer-events:none;letter-spacing:.04em}
+.asset-body{padding:1.1rem 1.1rem 1.2rem;display:flex;flex-direction:column;gap:.75rem;flex:1}
+.asset-top{display:flex;justify-content:space-between;align-items:baseline;gap:.5rem}
+.asset-top .pill{margin-right:0;white-space:nowrap}
+.asset-desc{color:var(--muted);font-size:.88rem}
+.asset-param{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:.6rem;font:400 .74rem var(--mono);color:var(--accent-soft)}
+.asset-param output{color:var(--fg);min-width:5.5ch;text-align:right}
+.asset .btn{align-self:flex-start}
+.asset .spec{font-size:.7rem}
