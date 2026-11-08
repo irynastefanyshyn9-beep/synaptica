@@ -3,7 +3,6 @@
    drawn with signed distance fields. Exposed parameters map to material uniforms. */
 (function(){
 const S = window.SYN; if (!S) return;
-const grid = document.getElementById('assetGrid'); if (!grid) return;
 
 const COMMON = `precision mediump float;
 uniform vec2 r,m;uniform float t,u,e,c;
@@ -225,6 +224,8 @@ const A = [
  return o;}`},
 ];
 
+window.SYN_ASSETS = {COMMON, A};
+const grid = document.getElementById('assetGrid'); if (!grid) return;
 const CATS = {combat:'Combat', navigation:'Navigation', status:'Status'};
 const cards = [];
 

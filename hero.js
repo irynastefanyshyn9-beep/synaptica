@@ -40,7 +40,13 @@ void main(){
 
 const g=S.mk(cv,FS);
 const st={f:.72,c:.72,hold:0,e:99,t:2};
-const hp=document.getElementById('holoHp');
+const hp=document.getElementById('holoHp'),vHp=document.getElementById('vHp'),vHpN=document.getElementById('vHpN');
+/* event feed */
+const fl=document.getElementById('feed');
+function feed(ic,txt,cls){if(!fl)return;const li=document.createElement('li');if(cls)li.className=cls;li.innerHTML='<em>'+ic+'</em><span>'+txt+'</span>';fl.prepend(li);while(fl.children.length>4)fl.lastChild.remove();}
+const EV=[['◆','HUD_Reticle.mat compiled · 0.4 ms'],['▲','Exported to Unreal · UMG widget'],['●','Atlas packed · 512² SDF · 64 KB'],['◆','HUD_Radar.mat · 1 draw call'],['▲','Exported to Unity · prefab'],['●','Frame budget OK · 0.21 ms GPU'],['◆','Theme “Ember” applied · 14 assets'],['▲','Exported to Godot · .tscn']];
+let ei=0;for(let k=0;k<3;k++)feed(...EV[ei++]);
+setInterval(()=>{feed(...EV[ei++%EV.length]);},2600);
 function draw(){
   if(!g) return; S.fit(cv,2);
   const x=g.gl; x.viewport(0,0,cv.width,cv.height); x.useProgram(g.pr);
@@ -49,6 +55,8 @@ function draw(){
   x.uniform1f(g.u('f'),st.f); x.uniform1f(g.u('c'),st.c); x.uniform1f(g.u('e'),st.e);
   x.drawArrays(x.TRIANGLES,0,3);
   if(hp) hp.textContent=Math.round(st.f*100);
+  if(vHp){vHp.style.width=(st.f*100).toFixed(1)+'%';vHp.style.background=st.f>.5?'var(--heal)':st.f>.25?'var(--warn)':'var(--damage)';}
+  if(vHpN) vHpN.textContent=Math.round(st.f*100);
 }
 
 /* tilt + glare follow the pointer anywhere over the hero */
@@ -70,6 +78,7 @@ btn.addEventListener('click',()=>{
   st.c=Math.max(st.c,st.f); st.hold=.5; st.e=0;
   st.f=Math.max(.06,st.f-(.12+Math.random()*.1));
   btn.classList.remove('hit'); void btn.offsetWidth; btn.classList.add('hit');
+  feed('▼','HIT −'+Math.round((st.c-st.f)*100)+' HP · chip 0.5 s','dmg');
   if(S.reduce) draw();
 });
 

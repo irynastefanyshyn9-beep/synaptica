@@ -33,42 +33,38 @@
   </div>
 </header>
 <main>
-<section class="hero scene center" id="top">
-  <canvas class="heroGL" aria-label="Real-time raymarched corridor rendered in WebGL"></canvas>
+<section class="iso-hero" id="top">
+  <div class="iso-floor" aria-hidden="true"></div>
   <div class="hud" aria-hidden="true">
     <span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>
     <div class="live"><i></i>LIVE · WEBGL · <span id="heroFps">60</span> FPS</div>
-    <div class="comp w-compass"><div class="tape">N · · · NE · · · E · · · SE · · · S · · · SW · · · W · · · NW · · · N · · · NE · · · E · · · SE · · · S · · · SW · · · W · · · NW · · · </div></div>
   </div>
-  <div class="wrap hc">
-    <span class="eyebrow ln">Master's project · UX, UI &amp; tech art by Iryna Stefanyshyn</span>
-    <h1>AAA game UI<br><span class="dim">without the grind</span></h1>
-    <p class="lede">A marketplace for animated HUD assets, built the way a technical artist ships them: one material per element, every look a shader parameter, a render budget you can read before you import.</p>
-    <div class="actions">
-      <a class="btn btn-primary" href="components.html#gallery">Play with live assets</a>
-      <a class="btn btn-ghost" href="#playground">Open the shader playground</a>
+  <div class="wrap iso-grid">
+    <div class="iso-text">
+      <span class="eyebrow ln-l"><em>01</em> Master's project · UX, UI &amp; tech art</span>
+      <h1>AAA game UI<br><span class="dim">without the grind</span></h1>
+      <p class="lede">A marketplace for animated HUD assets, built the way a technical artist ships them: every look a shader parameter, every asset one draw call.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="components.html#gallery">Play with live assets</a>
+        <a class="btn btn-ghost" href="#playground">Shader playground</a>
+      </div>
+      <p class="iso-by">Designed &amp; coded by <b>Iryna Stefanyshyn</b></p>
     </div>
-    <div class="hstage">
-      <span class="ghost" aria-hidden="true">HUD</span>
-      <span class="hlabel" aria-hidden="true"><i></i><em>01</em> Live material</span>
-      <span class="hcount" aria-hidden="true"><span>Assets</span><b>08</b></span>
-      <span class="br b1" aria-hidden="true"></span><span class="br b2" aria-hidden="true"></span><span class="br b3" aria-hidden="true"></span><span class="br b4" aria-hidden="true"></span>
-      <button class="holo" type="button" aria-label="Live health ring shader on a tilting card. Press to deal damage.">
-        <span class="holo-in">
-          <canvas id="holoGL" aria-hidden="true"></canvas>
-          <span class="holo-glare"></span>
-          <span class="holo-top"><span>SYN/HUD/Ring</span><span>MAT · 1 DC</span></span>
-          <span class="holo-val"><b id="holoHp">72</b>HEALTH</span>
-          <span class="holo-hint">Tilt me · click to hit</span>
-        </span>
-      </button>
-      <div class="hminis" aria-hidden="true">
-        <div class="hmini"><span class="mini-k"><i></i><em>02</em> Render budget</span><b>1 <small>draw call</small></b><span class="mini-row"><i style="width:12%"></i></span><span class="mini-s">0 KB textures · ≤ 2 MB full HUD</span></div>
-        <div class="hmini mid"><span class="mini-k"><i></i><em>03</em> Frame time</span><b><span id="heroFps2">60</span> <small>fps</small></b><svg viewBox="0 0 160 40" preserveAspectRatio="none"><polyline id="fpsLine" fill="none" stroke="currentColor" stroke-width="1.5" points=""/></svg></div>
-        <div class="hmini"><span class="mini-k"><i></i><em>04</em> Library</span><b>8 <small>live shaders</small></b><span class="mini-s">Combat · Navigation · Status</span></div>
+    <div class="iso-stage"><div class="iso-stack" role="listbox" aria-label="HUD assets — use arrow keys to switch" tabindex="0"></div><div class="iso-pool" aria-hidden="true"></div></div>
+    <div class="iso-side">
+      <div class="iso-view"><canvas id="isoGL" role="img" aria-label="Live shader preview of the selected HUD asset"></canvas>
+        <span class="iso-vt"><span><i></i>LIVE · <b id="isoFile">HUD_Reticle.mat</b></span><span id="isoIdx">01 / 08</span></span>
+        <output class="iso-read" id="isoRead"></output>
+      </div>
+      <div class="iso-ped" aria-hidden="true"></div>
+      <div class="iso-info">
+        <h2 id="isoName">Dynamic reticle</h2>
+        <p id="isoDesc"></p>
+        <div class="iso-meta"><span class="iso-tag" id="isoCat">Combat</span><span id="isoBudget"></span></div>
       </div>
     </div>
   </div>
+  <div class="iso-keys" aria-hidden="true"><span><kbd>◀</kbd><kbd>▶</kbd> Switch asset</span><span><kbd>A</kbd> Select</span><span><kbd>X</kbd> Fire event</span><span><kbd>B</kbd> Open gallery</span></div>
 </section>
 <div class="ticker-wrap" aria-hidden="true"><div class="ticker"><div class="tk-track"><span>One draw call</span><b>◆</b><span>Shader-driven, not baked</span><b>◆</b><span>Unity · Unreal · Godot</span><b>◆</b><span>Budgeted for 60 fps</span><b>◆</b><span>Built by a tech artist</span><b>◆</b><span>One draw call</span><b>◆</b><span>Shader-driven, not baked</span><b>◆</b><span>Unity · Unreal · Godot</span><b>◆</b><span>Budgeted for 60 fps</span><b>◆</b><span>Built by a tech artist</span><b>◆</b><span>One draw call</span><b>◆</b><span>Shader-driven, not baked</span><b>◆</b><span>Unity · Unreal · Godot</span><b>◆</b><span>Budgeted for 60 fps</span><b>◆</b><span>Built by a tech artist</span><b>◆</b><span>One draw call</span><b>◆</b><span>Shader-driven, not baked</span><b>◆</b><span>Unity · Unreal · Godot</span><b>◆</b><span>Budgeted for 60 fps</span><b>◆</b><span>Built by a tech artist</span><b>◆</b></div></div></div>
 
@@ -82,18 +78,20 @@
 
 <section class="block" id="abstract">
   <div class="wrap abstract">
-    <div>
-      <span class="eyebrow">Abstract</span>
-      <p class="big" style="margin-top:1rem">Game UI is usually delivered as baked video and sprite sheets, so every restyle sends work back to the artist and every import is a guess about performance.</p>
-      <p class="big">SYNAPTICA reframes the HUD marketplace around technical art: assets are shader materials with exposed parameters, layouts carry real engine anchors, and each component publishes its draw calls and memory. The prototypes on this site are working WebGL implementations of those ideas.</p>
+    <div class="abs-main">
+      <span class="eyebrow ln-l"><em>01</em> Abstract</span>
+      <p class="abs-q">Game UI usually ships as <s>baked video</s> and <s>sprite sheets</s>. Every restyle goes back to the artist. Every import is a <span class="hl">guess about performance.</span></p>
+      <div class="abs-a">
+        <span class="abs-tag">The idea</span>
+        <p><b>SYNAPTICA</b> treats every HUD asset as a <b>shader material</b> with exposed parameters, real engine anchors and a published render budget. The prototypes on this site are working WebGL implementations of that idea.</p>
+      </div>
     </div>
-    <dl>
-      <dt>Role</dt><dd>UX research, UI design, technical art, front-end prototype</dd>
-      <dt>Program</dt><dd>MSc Computer Science and Web Design, Woolf University</dd>
-      <dt>Course</dt><dd>Human-Computer Interaction Design (HCID)</dd>
-      <dt>Year</dt><dd>2026</dd>
-      <dt>Tools</dt><dd>Figma, After Effects, GLSL / WebGL, Unity, Unreal, Godot</dd>
-      <dt>Scope</dt><dd>5 pages, 4 live prototypes, design system</dd>
+    <dl class="aspec">
+      <div><dt>Role</dt><dd>UX research, UI design, technical art, front-end prototype</dd></div>
+      <div><dt>Program</dt><dd>MSc Computer Science &amp; Web Design, Woolf University</dd></div>
+      <div><dt>Course</dt><dd>Human-Computer Interaction Design (HCID)</dd></div>
+      <div><dt>Tools</dt><dd><span class="tg">Figma</span><span class="tg">After Effects</span><span class="tg">GLSL / WebGL</span><span class="tg">Unity</span><span class="tg">Unreal</span><span class="tg">Godot</span></dd></div>
+      <div class="nums"><div><b>2026</b><span>Year</span></div><div><b>05</b><span>Pages</span></div><div><b>12</b><span>Live shaders</span></div></div>
     </dl>
   </div>
 </section>
@@ -239,7 +237,8 @@
   </div>
 </footer>
 <script src="core.js"></script>
-<script src="hero.js"></script>
+<script src="gallery.js"></script>
+<script src="menu.js"></script>
 <script>
 (function(){
 const {mk,fit,NOISE,reduce,onFrame}=window.SYN;const $=id=>document.getElementById(id);
